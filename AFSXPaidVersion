@@ -1311,20 +1311,68 @@ if game.PlaceId == 11545598432 then
     
                 game:GetService("ReplicatedStorage").Events["Quests/RemoteEvent"]:FireServer(ohString1, ohString2, ohNumber3)
                 wait(0.1)
-                 
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1438.36987, 66.1035461, 1988.25781, -0.77754879, 0, -0.628822744, 0, 1, 0, 0.628822744, 0, -0.77754879) 
                 wait(0.1)
                 local ohString1 = "Equip"
                 local ohString2 = "Sword"
                 local ohBoolean3 = true
     
                 game:GetService("ReplicatedStorage").Events["Stats/RemoteFunction"]:InvokeServer(ohString1, ohString2, ohBoolean3)
-               
-                wait(0.00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001)
-                local ohString1 = "Equip"
+                local ohString1 = "TrainStat"
                 local ohString2 = "Sword"
-                local ohBoolean3 = false
     
-                game:GetService("ReplicatedStorage").Events["Stats/RemoteFunction"]:InvokeServer(ohString1, ohString2, ohBoolean3)
+                game:GetService("ReplicatedStorage").Events["Stats/RemoteFunction"]:InvokeServer(ohString1, ohString2)
+                wait(0.00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001)
+                local ohString1 = "TrainStat"
+                local ohString2 = "Sword"
+    
+                game:GetService("ReplicatedStorage").Events["Stats/RemoteFunction"]:InvokeServer(ohString1, ohString2)
+                wait(0.00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001)
+                local ohString1 = "TrainStat"
+                local ohString2 = "Sword"
+    
+                game:GetService("ReplicatedStorage").Events["Stats/RemoteFunction"]:InvokeServer(ohString1, ohString2)
+                wait(0.00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001)
+                local ohString1 = "TrainStat"
+                local ohString2 = "Sword"
+    
+                game:GetService("ReplicatedStorage").Events["Stats/RemoteFunction"]:InvokeServer(ohString1, ohString2)
+                wait(0.00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001)
+                local ohString1 = "TrainStat"
+                local ohString2 = "Sword"
+    
+                game:GetService("ReplicatedStorage").Events["Stats/RemoteFunction"]:InvokeServer(ohString1, ohString2)
+                wait(0.00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001)
+                local ohString1 = "TrainStat"
+                local ohString2 = "Sword"
+    
+                game:GetService("ReplicatedStorage").Events["Stats/RemoteFunction"]:InvokeServer(ohString1, ohString2)
+                wait(0.00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001)
+                local ohString1 = "TrainStat"
+                local ohString2 = "Sword"
+    
+                game:GetService("ReplicatedStorage").Events["Stats/RemoteFunction"]:InvokeServer(ohString1, ohString2)
+                wait(0.00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001)
+                local ohString1 = "TrainStat"
+                local ohString2 = "Sword"
+    
+                game:GetService("ReplicatedStorage").Events["Stats/RemoteFunction"]:InvokeServer(ohString1, ohString2)
+                wait(0.00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001)
+                local ohString1 = "TrainStat"
+                local ohString2 = "Sword"
+    
+                game:GetService("ReplicatedStorage").Events["Stats/RemoteFunction"]:InvokeServer(ohString1, ohString2)
+                wait(0.00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001)
+                local ohString1 = "TrainStat"
+                local ohString2 = "Sword"
+    
+                game:GetService("ReplicatedStorage").Events["Stats/RemoteFunction"]:InvokeServer(ohString1, ohString2)
+                wait(0.00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001)
+                local ohString1 = "TrainStat"
+                local ohString2 = "Sword"
+    
+                game:GetService("ReplicatedStorage").Events["Stats/RemoteFunction"]:InvokeServer(ohString1, ohString2)
+                wait(0.00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001)
                 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1115.87427, 67.8538895, 1354.78479, -0.937087655, 8.26632629e-08, 0.349094182, 8.72217782e-08, 1, -2.66064437e-09, -0.349094182, 2.79553571e-08, -0.937087655) 
                 keypress("0x45")
                 keyrelease("0x45")
@@ -1728,7 +1776,7 @@ if game.PlaceId == 11545598432 then
             game:GetService("TeleportService"):Teleport(11545598432, LocalPlayer)
         end
     end
-
+    
     local Tab = Window:CreateTab('Main', true, 'rbxassetid://3926305904', Vector2.new(484, 44), Vector2.new(36, 36))
     
     local Section = Tab:CreateSection('Auto Train')
@@ -1785,88 +1833,50 @@ if game.PlaceId == 11545598432 then
         autoUpSpeed()
     end)
     
+    
     local Tab = Window:CreateTab('Boss+Skill', false, 'rbxassetid://3926305904', Vector2.new(484, 44), Vector2.new(36, 36))
-
-    local Section = Tab:CreateSection('Boss')
     
-    local function CreateBossToggle(BOSS_NAME, position)
-        local isMovingToBoss = false
-        local bossSpawned = false
-        local bossConnection = nil
+    local Section = Tab:CreateSection('Auto Boss')
     
-        local function MoveToBoss(Mob)
-            repeat
-                wait()
-                if isMovingToBoss then
-                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(position)
-                    game.Players.LocalPlayer.Character:SetPrimaryPartCFrame(Mob.HumanoidRootPart.CFrame)
-                end
-            until not (isMovingToBoss and Mob and Mob.Parent and Mob:FindFirstChild("Humanoid"))
-        end
-        
-        local function HandleBossSpawned(Boss)
-            if not bossSpawned then
-                bossSpawned = true
-                isMovingToBoss = true
-                coroutine.wrap(function()
-                    MoveToBoss(Boss)
-                end)()
-            end
-        end
+    local Toggle = Section:CreateToggle('Auto Monkey', false, Color3.fromRGB(0, 125, 255), 0.25, function(Value)
+        getgenv().autoMon = Value 
+        autoMon()
+    end)
     
-        local function HandleBossRemoved()
-            isMovingToBoss = false
-            bossSpawned = false
-        end
+    local Toggle = Section:CreateToggle('Auto Overhaul', false, Color3.fromRGB(0, 125, 255), 0.25, function(Value)
+        getgenv().autoOver = Value 
+        autoOver()
+    end)
     
-        local function ToggleValueChanged(Value)
-            if Value then
-                local Boss = game.Workspace.Scriptable.Bosses:FindFirstChild(BOSS_NAME)
-                if Boss then
-                    isMovingToBoss = true
-                    coroutine.wrap(function()
-                        MoveToBoss(Boss)
-                    end)()
-                    bossConnection = Boss.ChildRemoved:Connect(HandleBossRemoved)
-                end
-            else
-                isMovingToBoss = false
-                if bossConnection then
-                    bossConnection:Disconnect()
-                end
-            end
-        end
+    local Toggle = Section:CreateToggle('Auto Shukaku', false, Color3.fromRGB(0, 125, 255), 0.25, function(Value)
+        getgenv().autoShukaku = Value 
+        autoShukaku()
+    end)
     
-        local Toggle = Section:CreateToggle('Auto ' .. BOSS_NAME, false, Color3.fromRGB(0, 125, 255), 0.25, ToggleValueChanged)
+    local Toggle = Section:CreateToggle('Auto Titan', false, Color3.fromRGB(0, 125, 255), 0.25, function(Value)
+        getgenv().autoTitan = Value 
+        autoTitan()
+    end)
     
-        spawn(function()
-            while true do
-                wait(1)  -- Adjust the interval as needed
-                local Boss = game.Workspace.Scriptable.Bosses:FindFirstChild(BOSS_NAME)
-                if Boss then
-                    HandleBossSpawned(Boss)
-                else
-                    bossSpawned = false
-                end
-                wait(1)  -- Add a delay before checking again
-            end
-        end)
-    end
+    local Toggle = Section:CreateToggle('Auto Arlong', false, Color3.fromRGB(0, 125, 255), 0.25, function(Value)
+        getgenv().autoArlong = Value 
+        autoArlong()
+    end)
     
-    local bossPositions = {
-        _friezy = Vector3.new(1173.84851, 167.718689, 1795.86377),
-        _ape = Vector3.new(-1529.29602, 39.1222382, -171),
-        _desertBoss = Vector3.new(1549.32654, 24.2589684, -600.291321),
-        _arlongo = Vector3.new(2019.05786, 186.293869, -2704.44312),
-        _overhaul = Vector3.new(-487.526001, -612.916504, 775.115234),
-        _armoredTitan = Vector3.new(1971.35803, 218.063828, -2755.94312),
-        _handDemon = Vector3.new(-704.1297, 184.137543, -2253.7915),
-        -- Add other boss positions here
-    }
+    local Toggle = Section:CreateToggle('Auto Hand Demon', false, Color3.fromRGB(0, 125, 255), 0.25, function(Value)
+        getgenv().autoHand = Value 
+        autoHand()
+    end)
     
-    for BOSS_NAME, position in pairs(bossPositions) do
-        CreateBossToggle(BOSS_NAME, position)
-    end
+    local Toggle = Section:CreateToggle('Auto Freeza', false, Color3.fromRGB(0, 125, 255), 0.25, function(Value)
+        getgenv().autoFreeza = Value 
+        autoFreeza()
+    end)
+    
+    local Toggle = Section:CreateToggle('Auto Pain', false, Color3.fromRGB(0, 125, 255), 0.25, function(Value)
+        getgenv().autoPain = Value 
+        autoPain()
+    end)
     
     local Section = Tab:CreateSection('Auto Use Skill (Punch Skills)')
     
@@ -2270,6 +2280,16 @@ if game.PlaceId == 11545598432 then
         autoHitP()
     end)
     
+
+    local LibraryFunctions = Window:CreateTab('Library Functions', false, 'rbxassetid://3926305904', Vector2.new(524, 44), Vector2.new(36, 36))
+
+    local UIFunctions = LibraryFunctions:CreateSection('Close UI')
+
+    local ToggleKeybind = UIFunctions:CreateKeybind('Close UI', 'E', function()
+        Library:ToggleUI()
+    end)
+
+
     for i,v in pairs(getconnections(game.Players.LocalPlayer.Idled)) do
         v:Disable()
     end
@@ -2998,6 +3018,1000 @@ local Tab = Window:CreateTab('Main', true, 'rbxassetid://3926305904', Vector2.ne
             autoSkillVF()
         end)
     
+    
+        local LibraryFunctions = Window:CreateTab('Library Functions', false, 'rbxassetid://3926305904', Vector2.new(524, 44), Vector2.new(36, 36))
+
+        local UIFunctions = LibraryFunctions:CreateSection('Close UI')
+    
+        local ToggleKeybind = UIFunctions:CreateKeybind('Close UI', 'E', function()
+            Library:ToggleUI()
+        end)
+
+
+    
+        for i,v in pairs(getconnections(game.Players.LocalPlayer.Idled)) do
+            v:Disable()
+        end
+        end
+    
+    
+    
+    
+    if game.PlaceId == 10202329527 then
+        local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+        local Window = OrionLib:MakeWindow({Name = "Trilha Hub | UPDATE 1 + Murcielago 🦇🔥 [PM]", HidePremium = false, IntroText = "Trilha Hub", SaveConfig = true, ConfigFolder = "Trilha Hub"})
+        
+    
+        function autoFarmVl()
+            while getgenv().autoFarmVl == true do
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-280.730011, -47.0518761, 247.803207, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+                wait(0.0000000000000000000000000000000000000000000000000000000000000000001)
+                local ohString1 = "Swing"
+                local ohNumber2 = 1
+                local ohString3 = "Fist"
+    
+                game:GetService("ReplicatedStorage").Remotes.Server.Initiate_Server:FireServer(ohString1, ohNumber2, ohString3)
+                wait(0.35)
+            end
+        end
+    
+        function autoEat()
+            while getgenv().autoEat == true do
+                wait(1)
+                game:GetService('VirtualInputManager'):SendKeyEvent(true,'E',false,game)
+                wait(1)
+            end
+        end
+    
+        function autoFarmS()
+            while getgenv().autoFarmS == true do
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(222.4487, -48.5280838, 226.796432, -0.438529491, 0, -0.898716748, 0, 1, 0, 0.898716748, 0, -0.438529491)
+                wait(0.0000000000000000000000000000000000000000000000000000000000000000001)
+                local ohString1 = "Swing"
+                local ohNumber2 = 1
+                local ohString3 = "Fist"
+    
+                game:GetService("ReplicatedStorage").Remotes.Server.Initiate_Server:FireServer(ohString1, ohNumber2, ohString3)
+                wait(1)
+            end
+        end
+    
+    
+        function autoFarmAd()
+            while getgenv().autoFarmAd == true do
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new( -753.917725, 95.3764572, -138.017731, -0.995896995, -0.0100058969, -0.0899401903, -0.00791962538, 0.999691904, -0.0235232376, 0.0901478603, -0.0227144267, -0.995669305)
+                wait(0.0000000000000000000000000000000000000000000000000000000000000000001)
+                local ohString1 = "Swing"
+                local ohNumber2 = 1
+                local ohString3 = "Fist"
+    
+                game:GetService("ReplicatedStorage").Remotes.Server.Initiate_Server:FireServer(ohString1, ohNumber2, ohString3)
+                wait(0.35)
+            end
+        end
+    
+    
+        function autoFarmT()
+            while getgenv().autoFarmT == true do
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(90.6706543, 14.1982489, 1153.12744, 0.368992269, 0, 0.929432452, 0, 1, 0, -0.929432452, 0, 0.368992269)
+                wait(0.0000000000000000000000000000000000000000000000000000000000000000001)
+                local ohString1 = "Swing"
+                local ohNumber2 = 1
+                local ohString3 = "Fist"
+    
+                game:GetService("ReplicatedStorage").Remotes.Server.Initiate_Server:FireServer(ohString1, ohNumber2, ohString3)
+                wait(0.35)
+            end
+        end
+    
+        function autoFarmA()
+            while getgenv().autoFarmA == true do
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-189.811752, -35.6681137, -364.355225, 0.0812901855, 3.64456305e-08, 0.996690452, 3.87408896e-08, 1, -3.97263591e-08, -0.996690452, 4.18420392e-08, 0.0812901855)
+                wait(0.0000000000000000000000000000000000000000000000000000000000000000001)
+                local ohString1 = "Swing"
+                local ohNumber2 = 1
+                local ohString3 = "Fist"
+    
+                game:GetService("ReplicatedStorage").Remotes.Server.Initiate_Server:FireServer(ohString1, ohNumber2, ohString3)
+                wait(0.35)
+            end
+        end
+    
+    
+        function autoFarmM()
+            while getgenv().autoFarmM == true do
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(    -422.538239, 38.5832405, 746.692444, -0.726746142, 2.04836716e-08, -0.686906159, 4.3980414e-08, 1, -1.67110503e-08, 0.686906159, -4.23551079e-08, -0.726746142)
+                wait(0.0000000000000000000000000000000000000000000000000000000000000000001)
+                local ohString1 = "Swing"
+                local ohNumber2 = 1
+                local ohString3 = "Fist"
+    
+                game:GetService("ReplicatedStorage").Remotes.Server.Initiate_Server:FireServer(ohString1, ohNumber2, ohString3)
+                wait(0.35)
+            end
+        end
+    
+        
+        function autoFarmH()
+            while getgenv().autoFarmH == true do
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(360.83197, -43.417614, -465.174469, -0.720263124, 0, -0.693701506, 0, 1, 0, 0.693701506, 0, -0.720263124)
+                wait(0.0000000000000000000000000000000000000000000000000000000000000000001)
+                local ohString1 = "Swing"
+                local ohNumber2 = 1
+                local ohString3 = "Fist"
+    
+                game:GetService("ReplicatedStorage").Remotes.Server.Initiate_Server:FireServer(ohString1, ohNumber2, ohString3)
+                wait(0.35)
+            end
+        end
+    
+    
+        function autoFarmTO()
+            while getgenv().autoFarmTO == true do
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(    -32.0152626, 85.8325653, -865.956604, 0.866527975, -6.58805703e-08, -0.499128491, 1.18402621e-08, 1, -1.11435533e-07, 0.499128491, 9.06521933e-08, 0.866527975)
+                wait(0.0000000000000000000000000000000000000000000000000000000000000000001)
+                local ohString1 = "Swing"
+                local ohNumber2 = 1
+                local ohString3 = "Fist"
+    
+                game:GetService("ReplicatedStorage").Remotes.Server.Initiate_Server:FireServer(ohString1, ohNumber2, ohString3)
+                wait(0.35)
+            end
+        end
+    
+    
+        function autoFarmAr()
+            while getgenv().autoFarmAr == true do
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(72.8447342, 17.3323326, 1151.01038, -0.999772906, 1.23141355e-08, -0.0213109255, 1.27243895e-08, 1, -1.91152854e-08, 0.0213109255, -1.93821137e-08, -0.999772906)
+                wait(0.0000000000000000000000000000000000000000000000000000000000000000001)
+                local ohString1 = "Swing"
+                local ohNumber2 = 1
+                local ohString3 = "Fist"
+    
+                game:GetService("ReplicatedStorage").Remotes.Server.Initiate_Server:FireServer(ohString1, ohNumber2, ohString3)
+                wait(0.35)
+            end
+        end
+    
+    
+    
+    
+        local Tab = Window:MakeTab({
+            Name = "Main",
+            Icon = "rbxassetid://4483345998",
+            PremiumOnly = false
+        })
+    
+    
+        Tab:AddToggle({
+            Name = "Auto Kill Arranca",
+            Default = false,
+            Callback = function(Value)
+                getgenv().autoFarmA = Value
+                autoFarmA()
+            end    
+        })
+    
+    
+        Tab:AddToggle({
+            Name = "Auto Kill Vasto Lorde",
+            Default = false,
+            Callback = function(Value)
+                getgenv().autoFarmVl = Value
+                autoFarmVl()
+            end    
+        })
+    
+    
+    
+        Tab:AddToggle({
+            Name = "Auto Kill Adjucha",
+            Default = false,
+            Callback = function(Value)
+                getgenv().autoFarmAd = Value
+                autoFarmAd()
+            end    
+        })
+    
+    
+        Tab:AddToggle({
+            Name = "Auto Kill Hollow",
+            Default = false,
+            Callback = function(Value)
+                getgenv().autoFarmH = Value
+                autoFarmH()
+            end    
+        })
+    
+    
+        Tab:AddToggle({
+            Name = "Auto Eat",
+            Default = false,
+            Callback = function(Value)
+                getgenv().autoEat = Value
+                autoEat()
+            end    
+        })
+    
+        local Tab = Window:MakeTab({
+            Name = "Auto Boss",
+            Icon = "rbxassetid://4483345998",
+            PremiumOnly = false
+        })
+    
+    
+        Tab:AddToggle({
+            Name = "Auto Kill Stark(Event)",
+            Default = false,
+            Callback = function(Value)
+                getgenv().autoFarmS = Value
+                autoFarmS()
+            end    
+        })
+    
+        Tab:AddToggle({
+            Name = "Auto Kill Menos",
+            Default = false,
+            Callback = function(Value)
+                getgenv().autoFarmM = Value
+                autoFarmM()
+            end    
+        })
+    
+
+        local LibraryFunctions = Window:CreateTab('Library Functions', false, 'rbxassetid://3926305904', Vector2.new(524, 44), Vector2.new(36, 36))
+
+        local UIFunctions = LibraryFunctions:CreateSection('Close UI')
+    
+        local ToggleKeybind = UIFunctions:CreateKeybind('Close UI', 'E', function()
+            Library:ToggleUI()
+        end)
+    
+    
+    
+        for i,v in pairs(getconnections(game.Players.LocalPlayer.Idled)) do
+            v:Disable()
+        end
+        end
+    
+    
+    
+    
+    
+    
+    if game.PlaceId == 6299805723 then
+        local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+        local Window = OrionLib:MakeWindow({Name = "Trilha Hub | AFS", HidePremium = false, IntroText = "Trilha Hub", SaveConfig = true, ConfigFolder = "Trilha Hub"})
+    
+    
+    getgenv().autoAttack = true
+    
+    getgenv().autoBleachEgg = true
+    
+    
+    
+    
+    function autoAttack()
+        while getgenv().autoAttack == true do
+            game:GetService("ReplicatedStorage").Remote.ClickerDamage:FireServer()
+            wait(0.000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000010)
+        end
+    end
+    
+    
+    function autoSlayer2Egg()
+        while getgenv().autoSlayer2Egg == true do
+            wait()
+            local args = {
+                [1] = "DemonSlayer2Egg"
+            }
+            
+            game:GetService("ReplicatedStorage").Remote.AttemptMultiOpen:FireServer(unpack(args))                                                
+            
+        end
+    end
+    
+    
+    
+    function autoBleach2Egg()
+        while getgenv().autoBleach2Egg == true do
+            wait()
+            local args = {
+                [1] = "BTYBWEgg"
+            }
+            
+            game:GetService("ReplicatedStorage").Remote.AttemptMultiOpen:FireServer(unpack(args))                                                
+            
+        end
+    end
+    
+    
+    function autoBleachEgg()
+        while getgenv().autoBleachEgg == true do
+            wait()
+            local args = {
+                [1] = workspace.Worlds.BTYBW.BTYBWEgg,
+                [2] = 999
+            }
+            
+            game:GetService("ReplicatedStorage").Remote.OpenEgg:InvokeServer(unpack(args))                                                          
+            
+        end
+    end
+    
+    
+    function autoSlayerEgg()
+        while getgenv().autoSlayerEgg == true do
+            wait()
+            local args = {
+                [1] = workspace.Worlds.DemonSlayer2.DemonSlayer2Egg,
+                [2] = 999
+            }
+            
+            game:GetService("ReplicatedStorage").Remote.OpenEgg:InvokeServer(unpack(args))                                                                  
+                                             
+            
+        end
+    end
+    
+    
+    
+    
+    
+    local FarmTab = Window:MakeTab({
+        Name = "Farm",
+        Icon = "rbxassetid://4483345998",
+        PremiumOnly = false
+    })
+    
+    
+    FarmTab:AddToggle({
+    Name = "Auto Clicker (OP)",
+    Default = false,
+    Callback = function(Value)
+        getgenv().autoAttack = Value
+        autoAttack()
+    end    
+    })
+    
+    
+    
+    
+    local MaxTab = Window:MakeTab({
+        Name = "Max Open",
+        Icon = "rbxassetid://4483345998",
+        PremiumOnly = false
+    })
+    
+    
+    MaxTab:AddToggle({
+        Name = "Auto Max Open Slayer Egg",
+        Default = false,
+        Callback = function(Value)
+            getgenv().autoSlayer2Egg = Value
+            autoSlayer2Egg()
+        end    
+        })
+    
+    
+    
+    MaxTab:AddToggle({
+    Name = "Auto Max Open BTYW Egg",
+    Default = false,
+    Callback = function(Value)
+        getgenv().autoBleach2Egg = Value
+        autoBleach2Egg()
+    end    
+    })
+    
+    local MultiTab = Window:MakeTab({
+        Name = "Multi Open",
+        Icon = "rbxassetid://4483345998",
+        PremiumOnly = false
+    })
+    
+    
+    
+    MultiTab:AddToggle({
+        Name = "Auto Multi Open Slayer",
+        Default = false,
+        Callback = function(Value)
+            getgenv().autoSlayerEgg = Value
+            autoSlayerEgg()
+        end    
+        })
+    
+    
+    
+    
+    
+    MultiTab:AddToggle({
+        Name = "Auto Multi Open BTYW",
+        Default = false,
+        Callback = function(Value)
+            getgenv().autoBleachEgg = Value
+            autoBleachEgg()
+        end    
+    })
+    
+    
+    local MiscTab = Window:MakeTab({
+        Name = "Misc",
+        Icon = "rbxassetid://4483345998",
+        PremiumOnly = false
+    })
+    
+    
+    local LibraryFunctions = Window:CreateTab('Library Functions', false, 'rbxassetid://3926305904', Vector2.new(524, 44), Vector2.new(36, 36))
+
+    local UIFunctions = LibraryFunctions:CreateSection('Close UI')
+
+    local ToggleKeybind = UIFunctions:CreateKeybind('Close UI', 'E', function()
+        Library:ToggleUI()
+    end)
+
+
+        for i,v in pairs(getconnections(game.Players.LocalPlayer.Idled)) do
+            v:Disable()
+        end
+        end
+    
+    
+    
+    
+    if game.PlaceId == 8304191830 then
+        local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+        local Window = OrionLib:MakeWindow({Name = "Trilha Hub | [🏖️SUMMER] Anime Adventures", HidePremium = false, IntroText = "Trilha Hub", SaveConfig = true, ConfigFolder = "Trilha Hub"})
+        
+    
+    
+    getgenv().autoRejoin = true
+    
+    getgenv().autoBuyPortalSummer = true
+    
+    getgenv().autoOpenPortalSummer = true
+    
+    getgenv().autoNextPortalSummer = true
+    
+    getgenv().autoSkip = true
+    
+    getgenv().autoLeave = true
+    
+    getgenv().AutoClaim = true
+    
+    getgenv().autoDaily = true
+    
+    
+    
+    
+    
+        
+        function autoRejoin()
+            while getgenv().autoRejoin == true do
+                wait()
+                local args = {
+                    [1] = "_lobbytemplategreen1"
+                }
+                
+                game:GetService("ReplicatedStorage").endpoints.client_to_server.request_join_lobby:InvokeServer(unpack(args))                                                                     
+                wait(1)
+                local args = {
+                    [1] = "_lobbytemplategreen1",
+                    [2] = "aot_level_1",
+                    [3] = false,
+                    [4] = "Normal"
+                }
+                
+                game:GetService("ReplicatedStorage").endpoints.client_to_server.request_lock_level:InvokeServer(unpack(args))
+                
+            end
+        end
+    
+        function autoBuyPortalSummer()
+            while getgenv().autoBuyPortalSummer == true do
+                wait()
+                local args = {
+                    [1] = "summer_portal_item_contract",
+                    [2] = "event",
+                    [3] = "event_shop",
+                    [4] = "1"
+                }
+                
+                game:GetService("ReplicatedStorage").endpoints.client_to_server.buy_item_generic:InvokeServer(unpack(args))
+                wait(10)
+        end
+    end
+    
+    function autoOpenPortalSummer()
+        while getgenv().autoOpenPortalSummer == true do
+            local args = {
+                game:GetService("ReplicatedStorage").endpoints.client_to_server.use_portal
+            }
+            wait(1)
+            local args = {
+                [1] = "_lobbytemplateportal24"
+            }
+            
+            game:GetService("ReplicatedStorage").endpoints.client_to_server.request_start_game:InvokeServer(unpack(args))
+            wait(30)        
+    end
+    end
+    
+    function autoNextPortalSummer()
+        while getgenv().autoNextPortalSummer == true do
+            wait()
+            
+            local args = {
+                [1] = "replay",
+                [2] = {
+                    ["item_uuid"] = "{c8114ecf-21da-4fee-b9d4-73d25107ba6d}"
+                }
+            }
+            
+            game:GetService("ReplicatedStorage").endpoints.client_to_server.set_game_finished_vote:InvokeServer(unpack(args))
+           
+    end
+    end
+    
+    function autoSkip()
+        while getgenv().autoSkip == true do
+            wait()
+            game:GetService("ReplicatedStorage").endpoints.client_to_server.vote_start:InvokeServer()
+            wait(1)
+            game:GetService("ReplicatedStorage").endpoints.client_to_server.vote_wave_skip:InvokeServer()
+            wait(1)
+    end
+    end
+    
+    function autoLeave()
+        while getgenv().autoLeave == true do
+            wait()
+            game:GetService("ReplicatedStorage").endpoints.client_to_server.teleport_back_to_lobby:InvokeServer()
+    
+    end
+    end
+    
+    
+    function AutoClaim()
+        while getgenv().AutoClaim == true do
+            wait()
+            game:GetService("ReplicatedStorage").endpoints.client_to_server.claim_battlepass_rewards:InvokeServer()
+    
+    end
+    end
+    
+    
+    
+    function autoClaim()
+        game:GetService("ReplicatedStorage").endpoints.client_to_server.claim_battlepass_rewards:InvokeServer()
+    end
+    
+    
+    function autoSummon()
+        while getgenv().autoSummon == true do
+         local args = {
+             [1] = "EventClover",
+             [2] = "gems10"
+         }
+         game:GetService("ReplicatedStorage").endpoints.client_to_server.buy_from_banner:InvokeServer(unpack(args))
+         wait(10)
+     end        
+     end
+    
+    
+    
+     function autoTicket()
+        while getgenv().autoTicket == true do
+            local args = {
+                [1] = "summon_ticket313190",
+                [2] = "1"
+            }
+            
+            game:GetService("ReplicatedStorage").endpoints.client_to_server.buy_travelling_merchant_item:InvokeServer(unpack(args))
+             end 
+            end       
+    
+            function autoDgAn()
+                while getgenv().autoDgAn == true do
+                    wait()
+                    local args = {
+                        [1] = "_lobbytemplate_event323"
+                    }
+                    
+                    game:GetService("ReplicatedStorage").endpoints.client_to_server.request_join_lobby:InvokeServer(unpack(args))
+                end
+            end
+    
+    
+        local FarmTab = Window:MakeTab({
+            Name = "Portal",
+            Icon = "rbxassetid://4483345998",
+            PremiumOnly = false
+        })
+    
+    
+        FarmTab:AddToggle({
+            Name = "Auto Rejoin(Not Working)",
+            Default = false,
+            Callback = function(Value)
+                getgenv().autoRejoin = Value
+                autoRejoin()
+            end    
+        })
+    
+    
+        FarmTab:AddToggle({
+            Name = "Auto Buy Portal Summer(Only Buy Tier 0)",
+            Default = false,
+            Callback = function(Value)
+                getgenv().autoBuyPortalSummer = Value
+                autoBuyPortalSummer()
+            end    
+        })
+        
+    
+        FarmTab:AddToggle({
+            Name = "Auto Open Portal Summer",
+            Default = false,
+            Callback = function(Value)
+                getgenv().autoOpenPortalSummer = Value
+                autoOpenPortalSummer()
+            end    
+        })
+    
+        FarmTab:AddToggle({
+            Name = "Auto Next Portal Summer",
+            Default = false,
+            Callback = function(Value)
+                getgenv().autoNextPortalSummer = Value
+                autoNextPortalSummer()
+            end    
+        })
+    
+    
+        local FarmTab = Window:MakeTab({
+            Name = "Farm",
+            Icon = "rbxassetid://4483345998",
+            PremiumOnly = false
+        })
+    
+    
+    
+    
+        FarmTab:AddToggle({
+            Name = "Auto Skip Wave",
+            Default = false,
+            Callback = function(Value)
+                getgenv().autoSkip = Value
+                autoSkip()
+            end    
+        })
+    
+        FarmTab:AddToggle({
+            Name = "Auto Leave",
+            Default = false,
+            Callback = function(Value)
+                getgenv().autoLeave = Value
+                autoLeave()
+            end    
+        })
+    
+    
+        FarmTab:AddToggle({
+            Name = "Auto Enter Dungeon Of Anniversary",
+            Default = false,
+            Callback = function(Value)
+                getgenv().autoDgAn = Value
+                autoDgAn()
+            end    
+        })
+    
+    
+    
+        
+    
+    
+        local MiscTab = Window:MakeTab({
+            Name = "Shop",
+            Icon = "rbxassetid://4483345998",
+            PremiumOnly = false
+        })
+        
+    
+        MiscTab:AddToggle({
+            Name = "Auto Buy Ticket",
+            Default = false,
+            Callback = function(Value)
+                getgenv().autoTicket = Value
+                autoTicket()
+            end    
+        }) 
+    
+    
+    
+        MiscTab:AddToggle({
+            Name = "Auto Summon",
+            Default = false,
+            Callback = function(Value)
+                getgenv().autoSummon = Value
+                autoSummon()
+            end    
+        })  
+    
+    
+    
+    
+        local MiscTab = Window:MakeTab({
+            Name = "Misc",
+            Icon = "rbxassetid://4483345998",
+            PremiumOnly = false
+        })
+        
+        MiscTab:AddToggle({
+            Name = "THE VERSION OF THE SCRIPT IS THE SUMMER UPDATE",
+            Default = false,
+            Callback = function(Value)
+                print(Value)
+            end    
+        })    
+        
+        MiscTab:AddButton({
+            Name = "Claim Btl Rewards",
+            Callback = function()
+                      autoClaim()
+              end    
+        })
+    
+        end
+
+        local LibraryFunctions = Window:CreateTab('Library Functions', false, 'rbxassetid://3926305904', Vector2.new(524, 44), Vector2.new(36, 36))
+
+        local UIFunctions = LibraryFunctions:CreateSection('Close UI')
+    
+        local ToggleKeybind = UIFunctions:CreateKeybind('Close UI', 'E', function()
+            Library:ToggleUI()
+        end)
+
+
+        if game.PlaceId == 14229839966 then
+            local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+            local Window = OrionLib:MakeWindow({Name = "Trilha Hub | [🏖️SUMMER] Anime Adventures", HidePremium = false, IntroText = "Trilha Hub", SaveConfig = true, ConfigFolder = "Trilha Hub"})
+            
+        
+        
+        getgenv().autoRejoin = true
+        
+        getgenv().autoBuyPortalSummer = true
+        
+        getgenv().autoOpenPortalSummer = true
+        
+        getgenv().autoNextPortalSummer = true
+        
+        getgenv().autoSkip = true
+        
+        getgenv().autoLeave = true
+    
+            
+            function autoRejoin()
+                while getgenv().autoRejoin == true do
+                    wait()
+                    local args = {
+                        [1] = "_lobbytemplategreen1"
+                    }
+                    
+                    game:GetService("ReplicatedStorage").endpoints.client_to_server.request_join_lobby:InvokeServer(unpack(args))                                                                     
+                    wait(1)
+                    local args = {
+                        [1] = "_lobbytemplategreen1",
+                        [2] = "aot_level_1",
+                        [3] = false,
+                        [4] = "Normal"
+                    }
+                    
+                    game:GetService("ReplicatedStorage").endpoints.client_to_server.request_lock_level:InvokeServer(unpack(args))
+                    
+                end
+            end
+        
+            function autoBuyPortalSummer()
+                while getgenv().autoBuyPortalSummer == true do
+                    wait()
+                    local args = {
+                        [1] = "summer_portal_item_contract",
+                        [2] = "event",
+                        [3] = "event_shop",
+                        [4] = "1"
+                    }
+                    
+                    game:GetService("ReplicatedStorage").endpoints.client_to_server.buy_item_generic:InvokeServer(unpack(args))
+                    wait(10)
+            end
+        end
+        
+        function autoOpenPortalSummer()
+            while getgenv().autoOpenPortalSummer == true do
+                wait()
+                local args = {
+                    [1] = "{76f1b2b0-6f7f-4dec-9460-027cbbb5618d}",
+                    [2] = {
+                        ["friends_only"] = true
+                    }
+                }
+                
+                game:GetService("ReplicatedStorage").endpoints.client_to_server.use_portal:InvokeServer(unpack(args))
+                wait(1)
+                local args = {
+                    [1] = "_lobbytemplateportal24"
+                }
+                
+                game:GetService("ReplicatedStorage").endpoints.client_to_server.request_start_game:InvokeServer(unpack(args))
+                wait(20)        
+        end
+        end
+        
+        function autoNextPortalSummer()
+            while getgenv().autoNextPortalSummer == true do
+                wait()
+                
+                local args = {
+                    [1] = "replay",
+                    [2] = {
+                        ["item_uuid"] = "{c8114ecf-21da-4fee-b9d4-73d25107ba6d}"
+                    }
+                }
+                
+                game:GetService("ReplicatedStorage").endpoints.client_to_server.set_game_finished_vote:InvokeServer(unpack(args))
+               
+        end
+        end
+        
+        function autoSkip()
+            while getgenv().autoSkip == true do
+                wait()
+                game:GetService("ReplicatedStorage").endpoints.client_to_server.vote_start:InvokeServer()
+                wait(1)
+                game:GetService("ReplicatedStorage").endpoints.client_to_server.vote_wave_skip:InvokeServer()
+                wait(1)
+        end
+        end
+        
+        function autoLeave()
+            while getgenv().autoLeave == true do
+                wait()
+                game:GetService("ReplicatedStorage").endpoints.client_to_server.teleport_back_to_lobby:InvokeServer()
+        
+        end
+        end
+    
+        function autoDgAn()
+            while getgenv().autoDgAn == true do
+                wait()
+                local args = {
+                    [1] = "_lobbytemplate_event323"
+                }
+                
+                game:GetService("ReplicatedStorage").endpoints.client_to_server.request_join_lobby:InvokeServer(unpack(args))
+            end
+        end
+        
+        
+        
+            local FarmTab = Window:MakeTab({
+                Name = "Portal",
+                Icon = "rbxassetid://4483345998",
+                PremiumOnly = false
+            })
+        
+        
+            FarmTab:AddToggle({
+                Name = "Auto Rejoin(Not Working)",
+                Default = false,
+                Callback = function(Value)
+                    getgenv().autoRejoin = Value
+                    autoRejoin()
+                end    
+            })
+        
+        
+            FarmTab:AddToggle({
+                Name = "Auto Buy Portal Summer(Only Buy Tier 0)",
+                Default = false,
+                Callback = function(Value)
+                    getgenv().autoBuyPortalSummer = Value
+                    autoBuyPortalSummer()
+                end    
+            })
+            
+        
+            FarmTab:AddToggle({
+                Name = "Auto Open Portal Summer",
+                Default = false,
+                Callback = function(Value)
+                    getgenv().autoOpenPortalSummer = Value
+                    autoOpenPortalSummer()
+                end    
+            })
+        
+            FarmTab:AddToggle({
+                Name = "Auto Next Portal Summer",
+                Default = false,
+                Callback = function(Value)
+                    getgenv().autoNextPortalSummer = Value
+                    autoNextPortalSummer()
+                end    
+            })
+        
+        
+            local FarmTab = Window:MakeTab({
+                Name = "Farm",
+                Icon = "rbxassetid://4483345998",
+                PremiumOnly = false
+            })
+        
+        
+        
+        
+            FarmTab:AddToggle({
+                Name = "Auto Skip Wave",
+                Default = false,
+                Callback = function(Value)
+                    getgenv().autoSkip = Value
+                    autoSkip()
+                end    
+            })
+        
+            FarmTab:AddToggle({
+                Name = "Auto Leave",
+                Default = false,
+                Callback = function(Value)
+                    getgenv().autoLeave = Value
+                    autoLeave()
+                end    
+            })
+    
+            
+            local MiscTab = Window:MakeTab({
+                Name = "Misc",
+                Icon = "rbxassetid://4483345998",
+                PremiumOnly = false
+            })
+            
+            MiscTab:AddToggle({
+                Name = "THE VERSION OF THE SCRIPT IS THE SUMMER UPDATE",
+                Default = false,
+                Callback = function(Value)
+                    print(Value)
+                end    
+            })    
+
+            local LibraryFunctions = Window:CreateTab('Library Functions', false, 'rbxassetid://3926305904', Vector2.new(524, 44), Vector2.new(36, 36))
+
+            local UIFunctions = LibraryFunctions:CreateSection('Close UI')
+        
+            local ToggleKeybind = UIFunctions:CreateKeybind('Close UI', 'E', function()
+                Library:ToggleUI()
+            end)
+    
+            for i,v in pairs(getconnections(game.Players.LocalPlayer.Idled)) do
+            v:Disable()
+        end
+        end
+    
+    
+    
+    
+        if game.PlaceId == 13775256536 then
+            local Library = loadstring(game:HttpGet('https://raw.githubusercontent.com/VisualRoblox/Roblox/main/UI-Libraries/Visual%20UI%20Library/Source.lua'))()
+            local Window = Library:CreateWindow('Tempest Hub', '[💥EP 57 PART 1] Toilet Tower Defense', 'Tempest Hub', 'rbxassetid://12715314849', 'VisualUIConfigs', 'Default')
+        
+            local LibraryFunctions = Window:CreateTab('Library Functions', false, 'rbxassetid://3926305904', Vector2.new(524, 44), Vector2.new(36, 36))
+
+            local UIFunctions = LibraryFunctions:CreateSection('Close UI')
+        
+            local ToggleKeybind = UIFunctions:CreateKeybind('Close UI', 'E', function()
+                Library:ToggleUI()
+            end)
+
     
     
         for i,v in pairs(getconnections(game.Players.LocalPlayer.Idled)) do
