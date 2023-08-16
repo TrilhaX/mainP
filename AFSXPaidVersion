@@ -1075,6 +1075,7 @@ function MakeScriptHub()
                      keypress("0x45")
                 keyrelease("0x45")     
                 wait(2)
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-31.086668, 75.0891724, -242.851974, 0.258864343, -0, -0.965913713, 0, 1, -0, 0.965913713, 0, 0.258864343)
             end
         end
         
@@ -1833,25 +1834,29 @@ function MakeScriptHub()
     
         local Section = Tab:CreateSection('Boss')
         
+    
+            
         local function CreateBossToggle(BOSS_NAME, position)
             local isMovingToBoss = false
             local bossSpawned = false
             local bossConnection = nil
         
             local function MoveToBoss(Mob)
-                repeat
+                while isMovingToBoss and Mob and Mob.Parent and Mob:FindFirstChild("Humanoid") do
                     wait()
                     if isMovingToBoss then
-                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(position)
-                        game.Players.LocalPlayer.Character:SetPrimaryPartCFrame(Mob.HumanoidRootPart.CFrame)
+                        local playerCharacter = game.Players.LocalPlayer.Character
+                        if playerCharacter and playerCharacter:FindFirstChild("HumanoidRootPart") then
+                            playerCharacter.HumanoidRootPart.CFrame = CFrame.new(position)
+                            playerCharacter:SetPrimaryPartCFrame(Mob.HumanoidRootPart.CFrame)
+                        end
                     end
-                until not (isMovingToBoss and Mob and Mob.Parent and Mob:FindFirstChild("Humanoid"))
+                end
             end
-            
+        
             local function HandleBossSpawned(Boss)
-                if not bossSpawned then
+                if not bossSpawned and isMovingToBoss then
                     bossSpawned = true
-                    isMovingToBoss = true
                     coroutine.wrap(function()
                         MoveToBoss(Boss)
                     end)()
@@ -1861,6 +1866,9 @@ function MakeScriptHub()
             local function HandleBossRemoved()
                 isMovingToBoss = false
                 bossSpawned = false
+                if bossConnection then
+                    bossConnection:Disconnect()
+                end
             end
         
             local function ToggleValueChanged(Value)
@@ -1875,13 +1883,31 @@ function MakeScriptHub()
                     end
                 else
                     isMovingToBoss = false
+                    bossSpawned = false
                     if bossConnection then
                         bossConnection:Disconnect()
                     end
                 end
             end
         
-            local Toggle = Section:CreateToggle('Auto ' .. BOSS_NAME, false, Color3.fromRGB(0, 125, 255), 0.25, ToggleValueChanged)
+            return ToggleValueChanged
+        end
+        
+        local bossPositions = {
+            _friezy = Vector3.new(1173.84851, 167.718689, 1795.86377),
+            _ape = Vector3.new(-1529.29602, 39.1222382, -171),
+            _desertBoss = Vector3.new(1549.32654, 24.2589684, -600.291321),
+            _arlongo = Vector3.new(2019.05786, 186.293869, -2704.44312),
+            _overhaul = Vector3.new(-487.526001, -612.916504, 775.115234),
+            _armoredTitan = Vector3.new(1971.35803, 218.063828, -2755.94312),
+            _handDemon = Vector3.new(-704.1297, 184.137543, -2253.7915),
+            -- Add other boss positions here
+        }
+        
+        for BOSS_NAME, position in pairs(bossPositions) do
+            local bossToggle = CreateBossToggle(BOSS_NAME, position)
+        
+            local Toggle = Section:CreateToggle('Auto ' .. BOSS_NAME, false, Color3.fromRGB(0, 125, 255), 0.25, bossToggle)
         
             spawn(function()
                 while true do
@@ -1897,20 +1923,6 @@ function MakeScriptHub()
             end)
         end
         
-        local bossPositions = {
-            _friezy = Vector3.new(1173.84851, 167.718689, 1795.86377),
-            _ape = Vector3.new(-1529.29602, 39.1222382, -171),
-            _desertBoss = Vector3.new(1549.32654, 24.2589684, -600.291321),
-            _arlongo = Vector3.new(2019.05786, 186.293869, -2704.44312),
-            _overhaul = Vector3.new(-487.526001, -612.916504, 775.115234),
-            _armoredTitan = Vector3.new(1971.35803, 218.063828, -2755.94312),
-            _handDemon = Vector3.new(-704.1297, 184.137543, -2253.7915),
-            -- Add other boss positions here
-        }
-        
-        for BOSS_NAME, position in pairs(bossPositions) do
-            CreateBossToggle(BOSS_NAME, position)
-        end
         
         local Section = Tab:CreateSection('Auto Use Skill (Punch Skills)')
         
@@ -2063,17 +2075,92 @@ function MakeScriptHub()
         
         local Tab = Window:CreateTab('Auto Quest', false, 'rbxassetid://3926305904', Vector2.new(484, 44), Vector2.new(36, 36))
         
-        local Section = Tab:CreateSection('Auto Quest')
+        local Section = Tab:CreateSection('Auto Endeavor Quest')
         
         local Toggle = Section:CreateToggle('Auto Endeavor Quest', false, Color3.fromRGB(0, 125, 255), 0.25, function(Value)
             getgenv().TeleportEN = Value 
             TeleportEN()
         end)
         
-        local Toggle = Section:CreateToggle('Auto Stain Quest', false, Color3.fromRGB(0, 125, 255), 0.25, function(Value)
-            getgenv().TeleportS = Value 
-            TeleportS()
+        local function CreateBossToggle(BOSS_NAME, position)
+            local isMovingToBoss = false
+            local bossSpawned = false
+            local bossConnection = nil
+        
+            local function MoveToBoss(Mob)
+                while isMovingToBoss and Mob and Mob.Parent and Mob:FindFirstChild("Humanoid") do
+                    wait()
+                    if isMovingToBoss then
+                        local playerCharacter = game.Players.LocalPlayer.Character
+                        if playerCharacter and playerCharacter:FindFirstChild("HumanoidRootPart") then
+                            playerCharacter.HumanoidRootPart.CFrame = CFrame.new(position)
+                            playerCharacter:SetPrimaryPartCFrame(Mob.CFrame)
+                        end
+                    end
+                end
+            end
+        
+            local function HandleBossSpawned(Boss)
+                if not bossSpawned and isMovingToBoss then
+                    bossSpawned = true
+                    coroutine.wrap(function()
+                        MoveToBoss(Boss)
+                    end)()
+                end
+            end
+        
+            local function HandleBossRemoved()
+                isMovingToBoss = false
+                bossSpawned = false
+                if bossConnection then
+                    bossConnection:Disconnect()
+                end
+            end
+        
+            local function ToggleValueChanged(Value)
+                if Value then
+                    local Boss = game:GetService("Workspace").Scriptable.Mobs[BOSS_NAME]
+                    if Boss then
+                        isMovingToBoss = true
+                        coroutine.wrap(function()
+                            MoveToBoss(Boss)
+                        end)()
+                        bossConnection = Boss.Parent.ChildRemoved:Connect(HandleBossRemoved)
+                    end
+                else
+                    isMovingToBoss = false
+                    bossSpawned = false
+                    if bossConnection then
+                        bossConnection:Disconnect()
+                    end
+                end
+            end
+        
+            return ToggleValueChanged
+        end
+        
+        -- This line is incorrect and should be removed. It's assigning a value to the HumanoidRootPart's CFrame, which doesn't make sense here.
+        -- game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1450.72534, 66.1035461, 1971.30762, 0.997358561, 0, 0.0726351365, 0, 1, 0, -0.0726351365, 0, 0.997358561)
+        
+        -- Assuming Section and bossToggle are defined elsewhere
+        local Section = Tab:CreateSection('Auto Stain Quest')
+        
+        local Toggle = Section:CreateToggle('Auto Stain', false, Color3.fromRGB(0, 125, 255), 0.25, CreateBossToggle("stain", CFrame.new(1450.72534, 66.1035461, 1971.30762)))
+        
+        spawn(function()
+            while true do
+                wait(1)  -- Adjust the interval as needed
+                local Boss = game:GetService("Workspace").Scriptable.Mobs.stain
+                if Boss and Boss:FindFirstChild("HumanoidRootPart") then
+                    HandleBossSpawned(Boss.HumanoidRootPart)
+                else
+                    bossSpawned = false
+                end
+                wait(1)  -- Add a delay before checking again
+            end
         end)
+        
+        
         
         local Tab = Window:CreateTab('Teleport', false, 'rbxassetid://3926305904', Vector2.new(484, 44), Vector2.new(36, 36))
         
@@ -2276,14 +2363,14 @@ function MakeScriptHub()
         
         local Section = Tab:CreateSection('Auto Chest')
         
-        local Toggle = Section:CreateToggle('Auto Chest', false, Color3.fromRGB(0, 125, 255), 0.25, function(Value)
+        local Toggle = Section:CreateToggle('Auto Chest(Activate = Tp until finished)', false, Color3.fromRGB(0, 125, 255), 0.25, function(Value)
             getgenv().autoChest = Value 
             autoChest()
         end)
         
         local Section = Tab:CreateSection('Auto Fruit')
         
-        local Toggle = Section:CreateToggle('Auto Fruit', false, Color3.fromRGB(0, 125, 255), 0.25, function(Value)
+        local Toggle = Section:CreateToggle('Auto Fruit(Activate = Tp until finished)', false, Color3.fromRGB(0, 125, 255), 0.25, function(Value)
             getgenv().autoGFruit = Value 
             autoGFruit()
         end)
@@ -2313,6 +2400,44 @@ function MakeScriptHub()
             getgenv().autoHitP = Value 
             autoHitP()
         end)
+    
+        local LibraryFunctions = Window:CreateTab('UI Functions', false, 'rbxassetid://3926305904', Vector2.new(524, 44), Vector2.new(36, 36))
+    
+    local UIFunctions = LibraryFunctions:CreateSection('UI Functions')
+    
+    
+        local ToggleKeybind = UIFunctions:CreateKeybind('Close UI', 'Del', function()
+            Library:ToggleUI()
+        end)
+    
+        local ConfigSection = LibraryFunctions:CreateSection('Config')
+    
+    local ConfigNameString = ''
+    local ConfigName = ConfigSection:CreateTextbox('Config Name', 'Input', function(Value)
+        ConfigNameString = Value
+    end)
+    
+    local SaveConfigButton = ConfigSection:CreateButton('Save Config', function()
+        Library:SaveConfig(ConfigNameString)
+    end)
+    
+    local SelectedConfig = ''
+    local ConfigsDropdown = ConfigSection:CreateDropdown('Configs', Library:GetConfigs(), nil, 0.25, function(Value)
+        SelectedConfig = Value
+    end)
+    
+    local DeleteConfigButton = ConfigSection:CreateButton('Delete Config', function()
+        Library:DeleteConfig(SelectedConfig)
+    end)
+    
+    local LoadConfigButton = ConfigSection:CreateButton('Load Config', function()
+        Library:LoadConfig(SelectedConfig)
+    end)
+    
+    local RefreshConfigsButton = ConfigSection:CreateButton('Refresh', function()
+        ConfigsDropdown:UpdateDropdown(Library:GetConfigs())
+    end)
+    
         
         for i,v in pairs(getconnections(game.Players.LocalPlayer.Idled)) do
             v:Disable()
@@ -3041,7 +3166,6 @@ function MakeScriptHub()
                 getgenv().autoSkillVF = Value 
                 autoSkillVF()
             end)
-        
         
         
             for i,v in pairs(getconnections(game.Players.LocalPlayer.Idled)) do
